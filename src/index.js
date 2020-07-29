@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import './index.css';
 import toDoReducer from './reducers/todos';
 import {addNewToDo} from './actions/todos';
+import Nav from './Components/Nav';
 import App from './Components/App';
+import About from './Components/About';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router,Route } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
 
 /**
@@ -14,7 +19,7 @@ import { Provider } from 'react-redux';
  * keeps track of the state data, and will help us operate on it using defined
  * reducers/actions.
  */
-let store = createStore( toDoReducer );
+const store = createStore( toDoReducer );
 
 // Attempt to output, see if we're getting an error.
 store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a change occurs (subcribe watches for changes.)
@@ -28,10 +33,25 @@ store.dispatch( addNewToDo( "Buy milk." ) );
 store.dispatch( addNewToDo( "Practice React." ) );
 store.dispatch( addNewToDo( "Practice Redux." ) );
 
-ReactDOM.render(
-  <Provider store={store}>
-      <App />
-    </Provider>,
-  document.getElementById('root')
+// Set up a "root" for our Router.
+const Root = store => (
+  <Provider store={store.store}>
+    <Router>
+      <h1>React Redux example w/Routing</h1>
+      <Nav />
+      <Route path="/" component={App} exact/>
+      <Route path="/about" component={About} />
+    </Router>
+  </Provider>
 );
 
+// Prop types required.
+Root.propTypes = {
+  store: PropTypes.object.isRequired
+};
+
+// Render the route-enabled configuration.
+render(
+  <Root store={store} />,
+  document.getElementById( 'root' )
+);
