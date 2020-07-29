@@ -1,6 +1,7 @@
 import React from 'react';
 import { addNewToDo,removeToDo } from '../actions/todos';
 import {connect} from 'react-redux';
+import ToDo from './ToDos';
 
 
 class App extends React.Component {
@@ -38,12 +39,6 @@ class App extends React.Component {
     this.setState( {[key]: value} );
   }
 
-  removeToDo ( id )
-  {
-      //Using dispatch with or remove action. dispatch method is passing a function.
-    this.props.dispatch(removeToDo(id));
-  }
-
   render ()
   {
     return (
@@ -65,9 +60,7 @@ class App extends React.Component {
           <h2>Current To-Dos:</h2>
           <ul>
             {this.props.toDos.map( toDo => ( // We can use .map() to "loop" through our array contents. Great for outputting something like these ToDos.
-              <li key={toDo.uniqueId} onClick={() => {this.removeToDo( toDo.uniqueId )} }>
-                {toDo.value}
-              </li>
+              <ToDo key={toDo.uniqueId} uniqueId= {toDo.uniqueId} text={toDo.value} />         
             ) )}
           </ul>
       </>
