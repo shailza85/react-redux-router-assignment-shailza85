@@ -1,5 +1,5 @@
 import React from 'react';
-import { addNewToDo,removeToDo } from './actions/todos';
+import { addNewToDo,removeToDo } from '../actions/todos';
 import {connect} from 'react-redux';
 
 
@@ -23,6 +23,10 @@ class App extends React.Component {
 
     // Dispatch an action; this one we set to require some "newtoDo" text.
     this.props.dispatch(addNewToDo(this.state.newToDo));
+
+    //clear the field for new input.
+    //this.setState({"newToDo": ""}); //do it old fashioned way
+    this.updateItem('newToDo',''); //or use preformatted method.
   }
 
   updateItem ( key, value )
@@ -73,6 +77,6 @@ class App extends React.Component {
 
 export default connect ( 
   state=>{return{toDos:state}},
-  
+
 )
 (App); //Name of the component(i.e App)
