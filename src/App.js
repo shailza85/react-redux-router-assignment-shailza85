@@ -1,4 +1,5 @@
 import React from 'react';
+import Applinks from './index';
 
 class App extends React.Component {
   constructor(props) {
@@ -70,6 +71,7 @@ class App extends React.Component {
       <>
       
         <h1>Welcome to my Calculator!</h1>
+        
         <form>
           <label htmlFor="input1">
             Input 1:
@@ -101,6 +103,13 @@ class App extends React.Component {
       
         <h2>Result: {this.state.result}</h2>
 
+        <h2>Past Calculations:</h2>
+
+        <ul>
+        
+         {this.state.input1} {this.state.selectValue} {this.state.input2}  {this.state.result}
+       
+        </ul>
 
       </>
     );

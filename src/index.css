@@ -30,3 +30,8 @@ label {
 #input1, #input2, #dropdown {
   margin-left: 15px;
 }
+
+
+ul li {
+  list-style: none;
+}
