@@ -1,17 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import ReactDOM from 'react-dom';
 import './index.css';
-import displayNumbers from './displayNumbers';
+import displayNumberReducer from './displayNumbersReducer';
+import PastCalculations from './PastCalculations';
 
 import Nav from './Nav';
 import App from './App';
-import About from './PastCalculations';
+
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
-import { render } from '@testing-library/react';
-import PastCalculations from './PastCalculations';
+
 
 
 /**
@@ -20,7 +20,7 @@ import PastCalculations from './PastCalculations';
  * keeps track of the state data, and will help us operate on it using defined
  * reducers/actions.
  */
-const store = createStore( displayNumbers );
+const store = createStore( displayNumberReducer );
 
 // Attempt to output, see if we're getting an error.
 store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a change occurs (subcribe watches for changes.)
@@ -41,18 +41,15 @@ const Root = store => (
      
       <Nav />
       <Route path="/" component={App} exact/>
-      <Route path="/pastcalculations" component={PastCalculations} />
+      <Route path="/PastCalculations" component={PastCalculations} />
+      
     </Router>
   </Provider>
 );
 
-// Prop types required.
-Root.propTypes = {
-  store: PropTypes.object.isRequired
-};
 
 // Render the route-enabled configuration.
-render(
+ReactDOM.render(
   <Root store={store} />,
   document.getElementById( 'root' )
 );

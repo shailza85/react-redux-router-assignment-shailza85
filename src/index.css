@@ -31,7 +31,27 @@ label {
   margin-left: 15px;
 }
 
+nav
+{
+  margin-top: 35px;
+}
+#root > nav > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 20px;
+  
+}
+#root > nav > ul li {
+  display: inline;
+    padding: 20px;
+    background-color: lightgreen;
+    font-weight: bolder;
+    font-size: larger;
+    
+}
+#root > nav > ul > li:nth-child(2) {
+  background-color: wheat;
 
-ul li {
-  list-style: none;
 }
