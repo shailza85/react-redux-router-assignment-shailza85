@@ -7,12 +7,12 @@
 const displayNumberReducer = ( state = [], action ) => { // Default state is an empty array here.
   switch ( action.type )
   {
-    // What happens if we are adding a new to-do:
+    
     case 'ADD_PAST_CALC':
       //Create a new array (with the same contents as the original.)
-      const updatedState=state.slice();
-      updatedState.push( action.value);
-      return updatedState;
+      const updatedState=state.slice();      
+      updatedState.push( action.value);// Add this task to the state
+      return updatedState;   // Return the updated state value.
       default:
           return state;
   }

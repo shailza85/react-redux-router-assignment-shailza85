@@ -1,17 +1,17 @@
 import React from 'react';
-
 import ReactDOM from 'react-dom';
-import './index.css';
-import displayNumberReducer from './displayNumbersReducer';
-import PastCalculations from './PastCalculations';
-
-import Nav from './Nav';
-import App from './App';
-
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 
+//Components
+import './index.css';
+import Nav from './Nav';
+import App from './App';
+import PastCalculations from './PastCalculations';
+
+//Redux
+import displayNumberReducer from './displayNumbersReducer';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 
 /**
@@ -25,24 +25,14 @@ const store = createStore( displayNumberReducer );
 // Attempt to output, see if we're getting an error.
 store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a change occurs (subcribe watches for changes.)
 
-/**
- * Redux Dispatch
- * Dispatch is used for us to send commands for mutation/manipulation/reads from
- * our store/state data.
- */
-//store.dispatch( addNewToDo( "Buy milk." ) );
-//store.dispatch( addNewToDo( "Practice React." ) );
-//store.dispatch( addNewToDo( "Practice Redux." ) );
 
-// Set up a "root" for our Router.
+// Set up a "root" for our Router. A function for provider.
 const Root = store => (
   <Provider store={store.store}>
     <Router>
-     
       <Nav />
       <Route path="/" component={App} exact/>
       <Route path="/PastCalculations" component={PastCalculations} />
-      
     </Router>
   </Provider>
 );
@@ -53,5 +43,13 @@ ReactDOM.render(
   <Root store={store} />,
   document.getElementById( 'root' )
 );
+
+
+
+/**@link http://www.hackingwithreact.com/read/1/4/importing-react-components-using-es6
+import ReactDOM from 'react-dom' is new, and imports the React tools required to render to the DOM – that's the name used for the document structure used to describe web pages and other similar documents.
+
+ReactDOM.render() is what kicks off the rendering of our entire app, and it takes two parameters: some JSX to render and where to render it to.
+*/
 
 

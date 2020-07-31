@@ -14,7 +14,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-#root > form > input[type=submit] {
+ input[type=submit] {
   background-color: lightgreen;
   font-weight: bolder;
   font-size: larger;
@@ -35,7 +35,7 @@ nav
 {
   margin-top: 35px;
 }
-#root > nav > ul {
+nav > ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -43,7 +43,7 @@ nav
   font-size: 20px;
   
 }
-#root > nav > ul li {
+nav > ul li {
   display: inline;
     padding: 20px;
     background-color: lightgreen;
@@ -51,7 +51,7 @@ nav
     font-size: larger;
     
 }
-#root > nav > ul > li:nth-child(2) {
+nav > ul > li:nth-child(2) {
   background-color: wheat;
 
 }
